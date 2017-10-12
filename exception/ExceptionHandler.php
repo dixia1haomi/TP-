@@ -8,7 +8,6 @@
 
 namespace app\exception;
 
-
 use think\Exception;
 use think\exception\Handle;
 use think\Log;
@@ -20,7 +19,7 @@ class ExceptionHandler extends Handle
     private $msg;
     private $errorCode;
 
-    public function render(Exception $e)
+    public function render(\Exception $e)
     {
         if($e instanceof BaseException){
             //如果是BaseException类型异常
@@ -50,7 +49,7 @@ class ExceptionHandler extends Handle
         return json($result,$this->code);
     }
 
-    protected function recordErrorLog(Exception $e){
+    protected function recordErrorLog(\Exception $e){
         Log::init([
             'type'  => 'file',
             'level' => ['error'],
